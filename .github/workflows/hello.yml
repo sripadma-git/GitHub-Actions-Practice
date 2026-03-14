@@ -3,6 +3,9 @@ name: Hello Workflow
 on:
   push:
     branches: [main]
+
+    paths:
+      - '**.html'
   
 
 jobs:
