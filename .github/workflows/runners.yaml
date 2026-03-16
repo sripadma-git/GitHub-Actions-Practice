@@ -1,0 +1,33 @@
+name: Runner OS Demo
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print system info
+        run: |
+          echo "OS: $(uname -a)"
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
+
+  windows-job:
+    runs-on: windows-latest
+    steps:
+      - name: Print system info
+        run: |
+          echo OS: %OS%
+          hostname
+          echo User: %USERNAME%
+
+  macos-job:
+    runs-on: macos-latest
+    steps:
+      - name: Print system info
+        run: |
+          echo "OS: $(uname -a)"
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
