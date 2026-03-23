@@ -1,21 +1,21 @@
 name: Run Tests
 on:
-  push:
+  workflow_call:
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20        # ← change 18 to 20
+            - name: setup python
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.13"
 
-      - name: Install Dependencies
-        run: npm install
+            - name: install dependencies
+              run: pip install -r requirements.txt
 
-      - name: Run Tests
-        run: npm test
+            - name: run tests
+              run: pytest test_app.py -v
